@@ -2,6 +2,8 @@ from classes.car import Car
 
 car1 = Car('ABC-123', 142)
 
+car1.accelerate(60)
+
 car1.drive(3)
 
 print(f"""Registration: {car1.registration_number}
