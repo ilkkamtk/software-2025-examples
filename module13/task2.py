@@ -25,10 +25,13 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/airport/<icao>')
 def get_airport(icao):
-    airport = get_airport_by_icao_code(icao)
-    if airport is None:
-        return {'message': 'Airport not found'}, 404
-    return airport
+    try:
+        airport = get_airport_by_icao_code(icao)
+        if airport is None:
+            return {'message': 'Airport not found'}, 404
+        return airport
+    except Exception:
+        return {'message': 'somthing went wrong'}, 500
 
 if __name__ == '__main__':
     app.run(use_reloader=True, host='127.0.0.1', port=3000)
